@@ -1,4 +1,13 @@
 .form-div {
-  margin-left: auto;
-  margin: auto;
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+}
+
+button {
+  margin-top: 15px;
+}
+
+input {
+  margin-bottom: 10px;
 }
