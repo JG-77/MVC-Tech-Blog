@@ -23,7 +23,11 @@
                 <a class="nav-link text-white" href="/dashboard">Dashboard</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white" href="/signup">Login</a>
+            {{#if loggedIn}}
+                <a class="nav-link text-white" href="/logout">Log Out</a>
+            {{else}}
+            <a class="nav-link text-white" href="/signup">Sign Up</a>
+            {{/if}}
             </li>
         </ul>   
     </div>
