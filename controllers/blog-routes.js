@@ -26,4 +26,32 @@ router.get('/', async (req, res) => {
 
 //POST comment on blog post
 
+// get login page
+router.get('/login', async (req, res) => {
+  // if (req.session.loggedIn) {
+  //   res.redirect('/');
+  //   return;
+  // }
+  try {
+    res.render('login');
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+// get sign up page
+router.get('/signup', async (req, res) => {
+  // if (req.session.loggedIn) {
+  //   res.redirect('/');
+  //   return;
+  // }
+  try {
+    res.render('signup');
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;
