@@ -2,8 +2,43 @@ const router = require('express').Router();
 
 //get home page with all blog posts
 router.get('/', async (req, res) => {
+  const posts = [
+    {
+      id: 1,
+      content: 'new post here',
+      title: 'Sample title',
+      publish_date: '2016-02-01 00:00:00+00:00',
+      user_id: '1',
+    },
+  ];
   try {
-    res.render('home');
+    res.render('home', { posts });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.get('/post/:id', async (req, res) => {
+  const posts = [
+    {
+      id: 1,
+      content: 'new post here',
+      title: 'Sample title',
+      publish_date: '2016-02-01 00:00:00+00:00',
+      user_id: '1',
+      comments: [
+        {
+          id: 1,
+          content: 'first comm',
+          publish_date: '2016-02-01 00:00:00+00:00',
+          user_id: 1,
+        },
+      ],
+    },
+  ];
+  try {
+    res.render('post', { post: posts[req.params.id - 1] });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
