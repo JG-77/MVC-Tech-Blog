@@ -1,10 +1,10 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Post extends Model {}
+class PostComment extends Model {}
 
-// model for post data
-Post.init(
+// model to link Posts and Comments by id's
+PostComment.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -12,22 +12,19 @@ Post.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    title: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    content: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    publish_date: {
-      type: DataTypes.DATE,
-      allowNull: false,
-    },
-    user_id: {
+    post_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'user',
+        model: 'post',
+        //unique: false,
+        key: 'id',
+      },
+    },
+    comment_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'comment',
+        //unique: false,
         key: 'id',
       },
     },
@@ -36,8 +33,8 @@ Post.init(
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: 'post',
+    modelName: 'post_comment',
   }
 );
 
-module.exports = Post;
+module.exports = PostComment;
