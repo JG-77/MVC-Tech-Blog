@@ -4,9 +4,9 @@ const Comment = require('./Comment');
 const PostComment = require('./PostComment');
 
 // A user can have many posts
-User.hasMany(Post, {
-  foreignKey: 'user_id',
-});
+// User.hasMany(Post, {
+//   foreignKey: 'user_id',
+// });
 
 // A post belongs to a single user
 Post.belongsTo(User, {
@@ -14,12 +14,12 @@ Post.belongsTo(User, {
 });
 
 // A user can have many comments
-User.hasMany(Comment, {
-  through: {
-    model: PostComment,
-    //unique: false,
-  },
-});
+// User.hasMany(Comment, {
+//   through: {
+//     model: PostComment,
+//     //unique: false,
+//   },
+// });
 
 // A comment belongs to a single user
 Comment.belongsTo(User, {
@@ -28,3 +28,9 @@ Comment.belongsTo(User, {
     //unique: false,
   },
 });
+
+module.exports = {
+  User,
+  Post,
+  Comment,
+};
