@@ -1,18 +1,23 @@
 const router = require('express').Router();
+const Post = require('../models/Post');
+const User = require('../models/User');
 
 //get home page with all blog posts
 router.get('/', async (req, res) => {
-  const posts = [
-    {
-      id: 1,
-      content: 'new post here',
-      title: 'Sample title',
-      publish_date: '2016-02-01 00:00:00+00:00',
-      user_id: '1',
-    },
-  ];
   try {
-    res.render('home', { posts });
+    const posts = await Post.findAll({
+      include: [
+        {
+          model: User,
+          attributes: ['username'],
+        },
+      ],
+    });
+
+    const postData = posts.map((post) => post.get({ plain: true }));
+    console.log(posts);
+    console.log(postData);
+    res.render('home', { postData });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
