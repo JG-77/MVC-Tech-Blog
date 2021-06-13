@@ -10,6 +10,6 @@
 {{#each post.comments as |Comment|}}
 <div>
     <h5 class="card-header">{{Comment.content}}</h5>
-    <h5 class="card-header text-right">{{Comment.date}}</h5>
+    <h5>{{Comment.publish_date}}</h5>
 </div>
 {{/each}}

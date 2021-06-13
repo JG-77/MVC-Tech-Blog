@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/post/:id', async (req, res) => {
+router.get('/:id', async (req, res) => {
   const posts = [
     {
       id: 1,
