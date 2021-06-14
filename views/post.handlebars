@@ -8,9 +8,10 @@
 </div>
 
 {{#each posts.comments as |Comment|}}
+{{!-- how do I include User.username --}}
 <div>
     <h5 class="card-header">{{Comment.content}}</h5>
-    {{!-- <h5>{{Comment.username}}</h5> --}}
+    <h5>{{Comment.user.username}}</h5>
     <p>{{Comment.publish_date}}</p>
 
 </div>
