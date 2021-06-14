@@ -15,6 +15,7 @@ Comment.belongsTo(User, {
   },
 });
 
+//Post belongs to many comments??
 Post.belongsToMany(Comment, {
   through: {
     model: PostComment,

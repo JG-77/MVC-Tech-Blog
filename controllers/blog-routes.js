@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Post, User } = require('../models/');
+const { Post, User, Comment } = require('../models/');
 
 //get home page with all blog posts
 router.get('/', async (req, res) => {
@@ -24,25 +24,20 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/:id', async (req, res) => {
-  const posts = [
-    {
-      id: 1,
-      content: 'new post here',
-      title: 'Sample title',
-      publish_date: '2016-02-01 00:00:00+00:00',
-      user_id: '1',
-      comments: [
+  try {
+    const postData = await Post.findByPk(req.params.id, {
+      include: [
         {
-          id: 1,
-          content: 'first comm',
-          publish_date: '2016-02-01 00:00:00+00:00',
-          user_id: 1,
+          model: Comment,
+          attributes: ['content', 'publish_date', 'user_id'],
         },
       ],
-    },
-  ];
-  try {
-    res.render('post', { post: posts[req.params.id - 1] });
+    });
+    const posts = postData.get({ plain: true });
+
+    console.log(posts);
+    console.log(postData);
+    res.render('post', { posts });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
