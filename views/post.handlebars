@@ -1,5 +1,4 @@
 <div class="card">  
-    {{!-- how do I include username for this post??--}}
         <h5 class="card-header">{{posts.user.username}}</h5>
         <h5 class="card-header text-right">{{posts.publish_date}}</h5>
         <div class="card-body">
@@ -11,7 +10,6 @@
 {{#each posts.comments as |Comment|}}
 <div>
     <h5 class="card-header">{{Comment.content}}</h5>
-{{!-- how do I include username for this comment??--}}
     <h5>{{Comment.user.username}}</h5>
     <p>{{Comment.publish_date}}</p>
 
