@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Post, User, Comment } = require('../models/');
+const checkAuthentication = require('../utils/authentication');
 
 //get home page with all blog posts
 router.get('/', async (req, res) => {
@@ -52,6 +53,23 @@ router.get('/post/:id', async (req, res) => {
 });
 
 // get dashboard where user's post display
+router.get('/dashboard', checkAuthentication, async (req, res) => {
+  try {
+    // Find the logged in user based on the session ID
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ['password'] },
+      include: [{ model: Post }],
+    });
+    const user = userData.get({ plain: true });
+
+    res.render('dashboard', {
+      ...user,
+      logged_in: true,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 // get new post template
 
