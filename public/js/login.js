@@ -1,5 +1,6 @@
 //login handler function
 const loginToApp = async (event) => {
+  event.preventDefault();
   const email = document.querySelector('#inputEmail4').value.trim();
   const password = document.querySelector('#inputPassword4').value.trim();
 
@@ -18,3 +19,5 @@ const loginToApp = async (event) => {
     }
   }
 };
+
+document.querySelector('#log-in-btn').addEventListener('submit', loginToApp);
