@@ -23,17 +23,23 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/:id', async (req, res) => {
+//shows post by id
+router.get('/post/:id', async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id, {
       include: [
         {
           model: Comment,
           attributes: ['content', 'publish_date', 'user_id'],
+          include: [User],
         },
         { model: User, attributes: ['username'] },
       ],
     });
+    if (!postData) {
+      res.status(404).json({ message: 'No post with ID found' });
+      return;
+    }
     const posts = postData.get({ plain: true });
 
     console.log(posts);
@@ -86,6 +92,7 @@ router.get('/signup', async (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
+    // res.send('hello');
   }
 });
 
