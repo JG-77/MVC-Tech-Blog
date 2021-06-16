@@ -52,17 +52,17 @@ router.get('/post/:id', async (req, res) => {
 router.get('/dashboard', checkAuthentication, async (req, res) => {
   try {
     // Find the logged in user based on the session ID
-    const userData = await Post.findAll({
+    const postData = await Post.findAll({
       where: { user_id: req.session.id },
     });
 
-    const user = userData.map((post) => post.get({ plain: true }));
+    const userPost = postData.map((post) => post.get({ plain: true }));
     res.render('dashboard', {
-      user,
+      userPost,
       loggedIn: true,
     });
-    console.log(userData);
-    console.log(user);
+    // console.log(userData);
+    // console.log(user);
   } catch (err) {
     res.status(500).json(err);
     console.log(err);
