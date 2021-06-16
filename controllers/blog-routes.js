@@ -15,8 +15,6 @@ router.get('/', async (req, res) => {
     });
 
     const postData = posts.map((post) => post.get({ plain: true }));
-    // console.log(posts);
-    // console.log(postData);
     res.render('home', { postData });
   } catch (err) {
     console.log(err);
@@ -54,12 +52,17 @@ router.get('/post/:id', async (req, res) => {
 router.get('/dashboard', checkAuthentication, async (req, res) => {
   try {
     // Find the logged in user based on the session ID
-    const userData = await User.findByPk(req.session.id, {
-      attributes: { exclude: ['password'] },
-      include: [{ model: Post }],
+    const userData = await Post.findAll({
+      include: [
+        {
+          model: User,
+          attributes: ['username'],
+          where: (user_id = req.session.id),
+        },
+      ],
     });
-    const user = userData.get({ plain: true });
 
+    const user = userData.map((post) => post.get({ plain: true }));
     res.render('dashboard', {
       user,
       loggedIn: true,
@@ -68,6 +71,7 @@ router.get('/dashboard', checkAuthentication, async (req, res) => {
     console.log(user);
   } catch (err) {
     res.status(500).json(err);
+    console.log(err);
   }
 });
 
