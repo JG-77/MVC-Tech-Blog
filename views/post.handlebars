@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card m-3 border border-danger">
         <div class="card-header text-start">
             <h3>{{posts.title}}</h3>
             <h5 class="text-end">by: {{posts.user.username}} on {{format_date posts.publish_date}}</h5>
@@ -9,7 +9,7 @@
 </div>
 
 {{#each posts.comments as |Comment|}}
-<div class="card">
+<div class="card m-3 border border-danger">
     <div class="card-header">
         <h5 class="text-end">Comment by: {{Comment.user.username}} on {{format_date Comment.publish_date}}</h5>
     </div>
