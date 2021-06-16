@@ -74,6 +74,20 @@ router.get('/dashboard', checkAuthentication, async (req, res) => {
 // POST new blog post
 
 //get specific user post
+router.get('/dashboard/:id', checkAuthentication, async (req, res) => {
+  try {
+    const userPostData = await Post.findByPk();
+
+    if (!userPostData) {
+      res.status(404).json({ message: 'No post with ID found' });
+      return;
+    }
+
+    res.render('dashboard');
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 // PUT --> update a saved blog post
 

@@ -1,17 +1,21 @@
-<div class="card">  
-        <h5 class="card-header">{{posts.user.username}}</h5>
-        <h5 class="card-header text-right">{{format_date posts.publish_date}}</h5>
+<div class="card">
+        <div class="card-header text-start">
+            <h3>{{posts.title}}</h3>
+            <h5 class="text-end">by: {{posts.user.username}} on {{format_date posts.publish_date}}</h5>
+        </div>
         <div class="card-body">
-            <h5 class="card-title">{{posts.title}}</h5>
             <p class="card-text">{{posts.content}}</p>
         </div>
 </div>
 
 {{#each posts.comments as |Comment|}}
-<div>
-    <h5 class="card-header">{{Comment.content}}</h5>
-    <h5>{{Comment.user.username}}</h5>
-    <p>{{format_date Comment.publish_date}}</p>
-
+<div class="card">
+    <div class="card-header">
+        <h5 class="text-end">Comment by: {{Comment.user.username}} on {{format_date Comment.publish_date}}</h5>
+    </div>
+    <div class="card-body">
+        <p class="card-text">{{Comment.content}}</p>
+    </div>
 </div>
 {{/each}}
+
