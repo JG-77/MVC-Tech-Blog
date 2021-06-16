@@ -20,4 +20,4 @@ const loginToApp = async (event) => {
   }
 };
 
-document.querySelector('#log-in-btn').addEventListener('submit', loginToApp);
+document.querySelector('#log-in-btn').addEventListener('click', loginToApp);

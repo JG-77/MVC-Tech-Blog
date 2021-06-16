@@ -64,6 +64,8 @@ router.get('/dashboard', checkAuthentication, async (req, res) => {
       user,
       loggedIn: true,
     });
+    console.log(userData);
+    console.log(user);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -122,7 +124,6 @@ router.get('/signup', async (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
-    // res.send('hello');
   }
 });
 

@@ -13,9 +13,9 @@ const signUpToApp = async (event) => {
       method: 'POST',
       body: JSON.stringify({ username, email, password }),
       headers: { 'Content-Type': 'application/json' },
-    })
+    });
     if (response.ok) {
-      console.log("rerouting to dash");
+      console.log(response);
       document.location.replace('/dashboard');
     } else {
       alert(response.statusText);
@@ -23,4 +23,4 @@ const signUpToApp = async (event) => {
   }
 };
 
-document.querySelector('#sign-up-btn').addEventListener('submit', signUpToApp);
+document.querySelector('#sign-up-btn').addEventListener('click', signUpToApp);
