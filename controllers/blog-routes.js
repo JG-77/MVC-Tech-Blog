@@ -43,8 +43,6 @@ router.get('/post/:id', async (req, res) => {
     }
     const posts = postData.get({ plain: true });
 
-    console.log(posts);
-    console.log(postData);
     res.render('post', { posts });
   } catch (err) {
     console.log(err);
