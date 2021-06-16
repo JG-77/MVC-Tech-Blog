@@ -99,11 +99,11 @@ router.get('/dashboard/:id', checkAuthentication, async (req, res) => {
 
 // get login page
 router.get('/login', async (req, res) => {
-  // if (req.session.loggedIn) {
-  //   res.redirect('/');
-  //   return;
-  // }
   try {
+    if (req.session.loggedIn) {
+      res.redirect('/');
+      return;
+    }
     res.render('login');
   } catch (err) {
     console.log(err);
@@ -113,11 +113,11 @@ router.get('/login', async (req, res) => {
 
 // get sign up page
 router.get('/signup', async (req, res) => {
-  // if (req.session.loggedIn) {
-  //   res.redirect('/');
-  //   return;
-  // }
   try {
+    if (req.session.loggedIn) {
+      res.redirect('/');
+      return;
+    }
     res.render('signup');
   } catch (err) {
     console.log(err);
