@@ -10,6 +10,10 @@
 
 ## Application Screenshots
 
+![Tech Blog Homepage](https://user-images.githubusercontent.com/76461629/122335154-af63f000-ceef-11eb-9c66-019e21c92290.png)
+![Tech Blog Create New Post](https://user-images.githubusercontent.com/76461629/122335160-b25ee080-ceef-11eb-9058-e1b20fb677ef.png)
+![Tech Blog Sign Up Form](https://user-images.githubusercontent.com/76461629/122335168-b4c13a80-ceef-11eb-8d9c-ac7b85bb2be2.png)
+
 ## Description
 
 ---
