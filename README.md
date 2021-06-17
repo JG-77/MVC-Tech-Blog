@@ -14,9 +14,20 @@
 
 ---
 
-Tech blog is a new app that allows user to create an account, discuss, and interact with other users regarding
+Tech Blog is a new app that allows user to create an account, discuss, and interact with other users regarding technology. Once an account is made, users will be able to create their own discussion posts or comment on other users' posts as well. Furthermore, users will be able to update or delete their own post with future application updates. Using Node.js with additional libraries and packages, this application is able to create a secure and authenticated experience for users so they can blog with peace of mind.
+
+_Version 2.0_: Next application update will include functionaliity for create, update, and delete a user blog post.
 
 ## Technologies
+
+---
+
+### Node.js/Express
+
+- Installed Node.js packages and dependencies (Express, MySQL2, Bcrypt, etc.)
+- Set up server.js file with packages to get server running
+- The connection.js file utilizes Sequelize and Dotenv to get database configured
+- The controllers folder has route structure set up with GET and POST methods in
 
 ## Contact
 

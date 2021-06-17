@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Post, User, Comment } = require('../models/');
+const { Post, User, Comment } = require('../models/Index');
 const checkAuthentication = require('../utils/authentication');
 
 //get home page with all blog posts
@@ -67,8 +67,6 @@ router.get('/dashboard', checkAuthentication, async (req, res) => {
   }
 });
 
-// POST new blog post
-
 //get specific user post
 router.get('/dashboard/:id', checkAuthentication, async (req, res) => {
   try {
@@ -108,6 +106,8 @@ router.get('/newpost', checkAuthentication, async (req, res) => {
 // get other user's existing post
 
 //POST comment on blog post
+
+// POST new blog post
 
 // get login page
 router.get('/login', async (req, res) => {
