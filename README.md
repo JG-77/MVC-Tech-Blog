@@ -20,7 +20,7 @@
 
 Tech Blog is a new app that allows user to create an account, discuss, and interact with other users regarding technology. Once an account is made, users will be able to create their own discussion posts or comment on other users' posts as well. Furthermore, users will be able to update or delete their own post with future application updates. Using Node.js with additional libraries and packages, this application is able to create a secure and authenticated experience for users so they can blog with peace of mind.
 
-_Version 2.0_: Next application update will include functionaliity for create, update, and delete a user blog post.
+_Version 2.0_: Next application update will include functionaliity for create, update, and delete a user blog post. Bug issues will be patched as well, thank you for your support and patience!
 
 ## Technologies
 
@@ -31,7 +31,20 @@ _Version 2.0_: Next application update will include functionaliity for create, u
 - Installed Node.js packages and dependencies (Express, MySQL2, Bcrypt, etc.)
 - Set up server.js file with packages to get server running
 - The connection.js file utilizes Sequelize and Dotenv to get database configured
-- The controllers folder has route structure set up with GET and POST methods in
+- The controllers folder has route structure set up with GET and POST methods in blog-routes.js and user-routes.js
+- Routes handle signup, log in, log out, and page render functionality
+
+### MySQL/Sequelize
+
+- Created blog database 'blog_db'
+- Set up models: Post, User, Comment, PostComment
+- Created seed data and seeded data into database
+- Index.js file sets up foreign key relationships
+
+### Handlebars.js
+
+- Using Handlebars.js framework to set up HTML structure
+- Linking Sequelize database with Express to display data dynamically in 'views' folder
 
 ## Contact
 
@@ -74,6 +87,8 @@ Copyright (c) 2009-2014 TJ Holowaychuk <tj@vision-media.ca> (Express.js)
 Copyright (c) 2013-2014 Roman Shtylman <shtylman+expressjs@gmail.com> (Express.js)
 
 Copyright (c) 2014-2015 Douglas Christopher Wilson <doug@somethingdoug.com> (Express.js)
+
+Copyright (C) 2011-2019 by Yehuda Katz (Handlebars.js)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
