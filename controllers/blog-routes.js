@@ -67,21 +67,35 @@ router.get('/dashboard', checkAuthentication, async (req, res) => {
   }
 });
 
-// get new post template
-
 // POST new blog post
 
 //get specific user post
 router.get('/dashboard/:id', checkAuthentication, async (req, res) => {
   try {
-    const userPostData = await Post.findByPk();
+    const userPostData = await Post.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          attributes: ['username'],
+        },
+      ],
+    });
 
     if (!userPostData) {
       res.status(404).json({ message: 'No post with ID found' });
       return;
     }
+    const dash = userPostData.get({ plain: true });
+    res.render('dashboard', { dash, loggedIn: true });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
-    res.render('dashboard');
+// get new post template
+router.get('/newpost', checkAuthentication, async (req, res) => {
+  try {
+    res.render('new-post', { loggedIn: true });
   } catch (err) {
     res.status(500).json(err);
   }
