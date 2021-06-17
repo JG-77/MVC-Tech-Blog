@@ -6,7 +6,7 @@
 
 [GitHub Link](https://github.com/JG-77/MVC-Tech-Blog.git)
 
-[Heroku Deployed Note-Taker Page]()
+[Heroku Deployed Note-Taker Page](https://tech-blog-jess.herokuapp.com/)
 
 ## Application Screenshots
 
